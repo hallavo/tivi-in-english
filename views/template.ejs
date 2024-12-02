@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tivi in English</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      article {
+        margin-bottom: 40px;
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+      }
+      h2 {
+        margin: 0 0 15px 0;
+        color: #333;
+      }
+      .article-image {
+        max-width: 100%;
+        height: auto;
+        margin: 15px 0;
+        border-radius: 4px;
+      }
+      .metadata {
+        font-size: 0.9em;
+        color: #666;
+        margin: 10px 0;
+      }
+      .description {
+        margin: 15px 0;
+      }
+      .categories {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .category {
+        background-color: #e0e0e0;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8em;
+      }
+      a {
+        color: #0066cc;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tivi in English</h1>
+    <div class="feed-container">
+      <% items.forEach(function(item) { %>
+      <article>
+        <h2><a href="<%= item.link %>"><%= item.title %></a></h2>
+        <% if (item.image) { %>
+        <img
+          class="article-image"
+          src="<%= item.image %>"
+          alt="<%= item.title %>"
+        />
+        <% } %>
+        <div class="metadata">
+          <span>By <%= item.author %></span> |
+          <span>Published: <%= item.pubDate %></span>
+        </div>
+        <div class="description"><%= item.description %></div>
+        <div class="categories">
+          <% item.categories.forEach(function(category) { %>
+          <span class="category"><%= category %></span>
+          <% }); %>
+        </div>
+      </article>
+      <% }); %>
+    </div>
+  </body>
+</html>
